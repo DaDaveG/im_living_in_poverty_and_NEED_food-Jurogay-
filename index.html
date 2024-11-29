@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indonesia's Culinary Gems</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #e3e3e3;
+        }
+    
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #ffffff;
+            color: #333;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+    
+        .expand-btn {
+            padding: 15px;
+            font-size: 16px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+        }
+    
+        .menu {
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+    
+        .menu button {
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            height: 40px;
+            width: 100px;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+    
+        .menu button:hover {
+            background-color: #333;
+        }
+    
+        .dynamic-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+    
+        .dynamic-content img {
+            width: 200px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .dynamic-subheading {
+            font-size: 18px;
+            color: #444;
+            font-weight: bold;
+        }
+    
+        .dynamic-content .text-content {
+            max-width: 500px;
+        }
+    
+        .dynamic-content h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+    
+        .dynamic-content p {
+            font-size: 16px;
+            color: #555;
+        }
+    
+        .image-boxes-section {
+            text-align: center;
+            margin-top: 3px;
+        }
+    
+        .image-boxes-section h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+    
+        .image-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+    
+        .image-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+    
+        .image-box img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    
+        .image-box p {
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+            max-width: 120px;
+        }
+    </style>    
+</head>
+<body>
+
+    <h1>Indonesia's Culinary Gems</h1>
+
+    <div class="button-container">
+        <button class="expand-btn" id="toggle-button">+</button>
+        <div class="menu" id="menu">
+            <button onclick="updateContent(1)">1</button>
+            <button onclick="updateContent(2)">2</button>
+            <button onclick="updateContent(3)">3</button>
+            <button onclick="updateContent(4)">4</button>
+            <button onclick="updateContent(5)">5</button>
+        </div>
+    </div>
+
+    <div class="dynamic-content" id="dynamic-content">
+        <img src="img/default.jpg" alt="Restaurant Here." id="dynamic-image">
+        <div class="text-content">
+            <h2 id="dynamic-title">ICT Project - Food Blog</h2>
+            <p id="dynamic-paragraph">Please select a button to proceed. <br>(Restaurant description shall be here.) <br><br>P.S This website was created with the association of: <br>Dave, Oliv, Aurel, Galih, Shandria.<br><br>Special Thanks: Thoriq and Juro<br></p>
+            <div class="dynamic-subheading" id="dynamic-subheading"></div>
+        </div>
+
+        <div class="image-boxes-section">
+            <h3 id="image-boxes-title">Dishes will be shown here.</h3>
+            <div class="image-boxes" id="image-boxes">
+                <div class="image-box">
+                    <img src="images/default.jpg" alt="Dish 1" id="sub-image-1">
+                    <p id="sub-text-1">1</p>
+                </div>
+                <div class="image-box">
+                    <img src="images/default.jpg" alt="Dish 2" id="sub-image-2">
+                    <p id="sub-text-2">2</p>
+                </div>
+                <div class="image-box">
+                    <img src="images/default.jpg" alt="Dish 3" id="sub-image-3">
+                    <p id="sub-text-3">3</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    function updateContent(option) {
+        const image = document.getElementById('dynamic-image');
+        const title = document.getElementById('dynamic-title');
+        const paragraph = document.getElementById('dynamic-paragraph');
+        const subheading = document.getElementById('dynamic-subheading');
+        const subImage1 = document.getElementById('sub-image-1');
+        const subImage2 = document.getElementById('sub-image-2');
+        const subImage3 = document.getElementById('sub-image-3');
+        const subText1 = document.getElementById('sub-text-1');
+        const subText2 = document.getElementById('sub-text-2');
+        const subText3 = document.getElementById('sub-text-3');
+        const imageBoxTitle = document.getElementById('image-boxes-title');
+
+        const contentData = {
+    1: {
+        image: 'img/resto/BungRam.jpeg',
+        title: 'Bunga Rampai',
+        paragraph: 'This exquisite Indonesian restaurant is located within a Dutch heritage house in Menteng. Established in 2007,  The venues stunning ambiance captivates visitors upon entering for the first time. This iconic Indonesian dining spot has become a popular choice for both locals and international visitors looking for a sophisticated meal.',
+        subheading: '(Price Range: 86K - 315K IDR Per Person)',
+        subImages: ['img/dish/1.jpeg', 'img/dish/2.jpg', 'img/dish/3.jpg'],
+        subTexts: ['Konro Bakar', 'Soto Alamanda', 'Udang Kenari'],
+        imageBoxTitle: 'Signature Dishes of Bunga Rampai'
+    },
+    2: {
+        image: 'img/resto/HarMan.jpg',
+        title: 'Harum Manis',
+        paragraph: 'Apart from serving luxurious Indonesian food and presenting the elegance of traditional Javanese nuances in every corner of the room, Harum Manis also regularly displays typical Indonesian culture through music and theater performances, making its guests feel more immersed with the traditionalism as they dine in this restaurant.',
+        subheading: '(Price Range: 58K - 175K IDR Per Person)',
+        subImages: ['img/dish/4.jpg', 'img/dish/5.jpg', 'img/dish/6.jpg'],
+        subTexts: ['Sate Ayam Mbok Ayu', 'Kepiting Soka Telur Asin', 'Sop Ikan Parang Tritis'],
+        imageBoxTitle: 'Signature Dishes of Harum Manis'
+    },
+    3: {
+        image: 'img/resto/KemGoe.jpg',
+        title: 'Kembang Goela',
+        paragraph: 'Kembang Goela is one of the places to eat premium class Indonesian cuisine which is located in the city center, namely the Sudirman area. Even though the location is strategic, the location of this luxury restaurant in Jakarta is quite hidden, in a separate building in Plaza Sentral.',
+        subheading: '(Price Range: 63K - 165K IDR Per Person)',
+        subImages: ['img/dish/7.jpg', 'img/dish/8.jpg', 'img/dish/9.jpg'],
+        subTexts: ['Dendeng Balado', 'Yuyu Salad Manga', 'Nasi Goreng Cakalang'],
+        imageBoxTitle: 'Signature Dishes of Kembang Goela'
+    },
+    4: {
+        image: 'img/resto/TuKuPa.jpg',
+        title: 'Tugu Kunstkring Paleis',
+        paragraph: 'Not only is this place a restaurant, it also serves as an art gallery, a cultural venue, as well as an event space for up to 1000 people. Kuntskring Paleis Monument which was once the place where "Buddha Bar" stood before it ultimately closed in September 2010. Due to its nature as a former Dutch colonial building, this serves as a great place to enjoy Indonesian food while admiring a number of old works of art.',
+        subheading: '(Price Range: 95K - 315K IDR Per Person)',
+        subImages: ['img/dish/10.jpeg', 'img/dish/11.jpg', 'img/dish/12.jpeg'],
+        subTexts: ['Nasi Poeti Tjiandjoer', 'Tahoe Telur', 'Kaas Croquetjes met Kip'],
+        imageBoxTitle: 'Signature Dishes of Tugu Kunstkring Paleis'
+    },
+    5: {
+        image: 'img/resto/SerRas.jpg',
+        title: 'Seribu Rasa',
+        paragraph: 'Inspired by the regions culinary richness, Seribu Rasa offers delicious local dishes and seafood that embody the rich flavors of Southeast Asia and Indonesia. Each traditional recipe is prepared with fresh ingredients and perfected by our Chefs culinary skills, taking our customers on a fascinating “Thousand Flavors” gastronomic journey.',
+        subheading: '(Price Range: 55K - 117K IDR Per Person)',
+        subImages: ['img/dish/13.jpg', 'img/dish/14.jpg', 'img/dish/15.jpg'],
+        subTexts: ['Jumbo Prawn Golden Egg Yolk', 'Ayam Goreng Ala Binjai', 'Jimbaran Fried Fish'],
+        imageBoxTitle: 'Signature Dishes of Seribu Rasa'
+        },
+    };
+
+
+        if (contentData[option]) {
+            const data = contentData[option];
+            image.src = data.image;
+            title.textContent = data.title;
+            paragraph.textContent = data.paragraph;
+            subheading.textContent = data.subheading || '';
+            subImage1.src = data.subImages[0];
+            subImage2.src = data.subImages[1];
+            subImage3.src = data.subImages[2];
+            subText1.textContent = data.subTexts[0];
+            subText2.textContent = data.subTexts[1];
+            subText3.textContent = data.subTexts[2];
+            imageBoxTitle.textContent = data.imageBoxTitle;
+        }
+    }
+
+    const toggleButton = document.getElementById('toggle-button');
+    const menu = document.getElementById('menu');
+    toggleButton.addEventListener('click', () => {
+        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!document.querySelector('.button-container').contains(e.target)) {
+            menu.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
